@@ -59,7 +59,9 @@ export const LoginPage: React.FC = () => {
         },
         onError: (err: any) => {
           const errorMsg =
-            err?.response?.data?.message || 'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin!';
+            err?.response?.data?.error ||
+            err?.response?.data?.message ||
+            'Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin!';
           message.error(errorMsg);
         },
       }

@@ -79,7 +79,9 @@ export const RegisterPage: React.FC = () => {
         },
         onError: (err: any) => {
           const errorMsg =
-            err?.response?.data?.message || 'Đăng ký thất bại. Vui lòng thử lại sau!';
+            err?.response?.data?.error ||
+            err?.response?.data?.message ||
+            'Đăng ký thất bại. Vui lòng thử lại sau!';
           message.error(errorMsg);
         },
       }
