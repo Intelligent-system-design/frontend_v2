@@ -4,6 +4,11 @@ export interface User {
   email: string;
   fullName?: string;
   avatar?: string;
+  eloScore?: number;
+  winMatches?: number;
+  loseMatches?: number;
+  drawMatches?: number;
+  role?: string;
   createdAt?: string;
 }
 
