@@ -77,17 +77,17 @@ export const LoginPage: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
 
-        {/* Gradient Overlay for visual hierarchy */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent md:bg-gradient-to-r md:from-white/40 md:via-white/20 md:to-white" />
+        {/* Gradient Overlay for smooth transition to form card */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-white/50 md:to-white" />
 
-        {/* Bottom Text Overlay */}
-        <div className="relative z-10 max-w-lg mb-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#b81414] tracking-tight leading-none">
+        {/* Bottom Text Overlay with frosted glass card for crystal clear readability */}
+        <div className="relative z-10 max-w-lg mb-6 bg-white/70 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/80 shadow-lg">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#b81414] tracking-tight leading-tight">
             KỸ TRỊ
             <br />
             THIÊN HẠ
           </h1>
-          <p className="mt-4 text-sm md:text-base text-gray-700 font-medium leading-relaxed">
+          <p className="mt-3 text-sm md:text-base text-gray-900 font-semibold leading-relaxed">
             Trải nghiệm đỉnh cao nghệ thuật điều quân và chiến lược quân sự truyền thống trên nền tảng kỹ thuật số hiện đại.
           </p>
         </div>
