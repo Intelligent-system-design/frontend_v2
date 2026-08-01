@@ -3,11 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { User, Lock } from 'lucide-react';
+import { User, Lock, ArrowRight } from 'lucide-react';
 import { message } from 'antd';
 import { useLoginMutation } from '@/services/auth.service';
 import { useAuthStore } from '@/store/auth.store';
-import xiangqiBg from '@/assets/images/xiangqi_bg.png';
 
 // Zod validation schema strictly typed
 const loginSchema = z.object({
@@ -69,113 +68,134 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col md:flex-row w-full min-h-[calc(100vh-110px)]">
-      {/* Left Column: Xiangqi Image Banner */}
-      <div className="relative md:w-1/2 min-h-[380px] md:min-h-full flex flex-col justify-end p-8 md:p-14 overflow-hidden">
-        {/* Background Image */}
-        <img
-          src={xiangqiBg}
-          alt="Bàn cờ tướng"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
+    <div className="flex-1 flex items-center justify-center w-full px-4 py-8 xiangqi-master-bg">
+      <div className="max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-xl border border-[#e5dfd5] flex flex-col md:flex-row my-4">
+        {/* Left Column: Brand Showcase */}
+        <div className="md:w-5/12 bg-[#ebe7e0] p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+          <div>
+            {/* Top Circle Icon with Chinese Piece '將' */}
+            <div className="w-14 h-14 rounded-full border-2 border-[#361e15] bg-[#ebe7e0] flex items-center justify-center text-2xl font-black text-[#361e15] shadow-xs mb-8">
+              將
+            </div>
 
-        {/* Gradient Overlay for smooth transition to form card */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-white/50 md:to-white" />
+            <h1 className="text-3xl lg:text-4xl font-serif font-bold text-[#361e15] leading-snug">
+              Chinh phục bàn cờ. Khai phóng tư duy.
+            </h1>
 
-        {/* Bottom Text Overlay with frosted glass card for crystal clear readability */}
-        <div className="relative z-10 max-w-lg mb-6 bg-white/70 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/80 shadow-lg">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#b81414] tracking-tight leading-tight">
-            KỸ TRỊ
-            <br />
-            THIÊN HẠ
-          </h1>
-          <p className="mt-3 text-sm md:text-base text-gray-900 font-semibold leading-relaxed">
-            Trải nghiệm đỉnh cao nghệ thuật điều quân và chiến lược quân sự truyền thống trên nền tảng kỹ thuật số hiện đại.
-          </p>
+            <p className="text-xs md:text-sm text-gray-600 leading-relaxed mt-4">
+              Chào mừng bạn quay trở lại với đấu trường Xiangqi Master. Tiếp tục những trận cờ đỉnh cao và thăng hạng cùng cộng đồng.
+            </p>
+          </div>
+
+          {/* Bottom Avatars Stack */}
+          <div className="mt-12 pt-6 border-t border-[#d8d3c8]">
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2">
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-[#ebe7e0] object-cover"
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+                  alt="Kỳ thủ"
+                />
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-[#ebe7e0] object-cover"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
+                  alt="Kỳ thủ"
+                />
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-[#ebe7e0] object-cover"
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
+                  alt="Kỳ thủ"
+                />
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#361e15] text-[10px] font-bold text-white ring-2 ring-[#ebe7e0]">
+                  +2k
+                </div>
+              </div>
+              <span className="text-xs font-medium text-gray-700">
+                Hơn 2,000 kỳ thủ đang sẵn sàng thách đấu.
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Right Column: Login Form */}
-      <div className="md:w-1/2 flex flex-col items-center justify-center p-6 md:p-12 bg-white">
-        <div className="w-full max-w-md flex flex-col items-center">
-          {/* Header Title */}
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-black text-[#b91c1c] tracking-tight">CỜ TƯỚNG</h2>
-            <p className="text-sm font-medium text-gray-600 mt-1">Hệ thống Chiến lược Hoàng gia</p>
+        {/* Right Column: Login Form */}
+        <div className="md:w-7/12 bg-white p-8 md:p-12 flex flex-col justify-center">
+          <div className="mb-6">
+            <h2 className="text-3xl font-serif font-bold text-gray-900">Đăng Nhập</h2>
+            <p className="text-xs text-gray-500 mt-1">
+              Nhập thông tin tài khoản để truy cập hệ thống
+            </p>
           </div>
 
-          {/* Form Card */}
-          <div className="w-full bg-white rounded-2xl p-7 md:p-8 shadow-xl border border-gray-100">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              {/* Field 1: Username */}
-              <div>
-                <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">
-                  TÊN ĐĂNG NHẬP
-                </label>
-                <div className="relative flex items-center">
-                  <User className="absolute left-3.5 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="Nhập tên tài khoản"
-                    {...register('username')}
-                    className="w-full bg-[#f3f4f6] text-gray-800 text-sm rounded-lg pl-11 pr-4 py-3 border border-transparent focus:border-[#b91c1c] focus:bg-white focus:outline-none transition-all"
-                  />
-                </div>
-                {errors.username && (
-                  <p className="mt-1 text-xs text-red-600">{errors.username.message}</p>
-                )}
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            {/* Field 1: Username */}
+            <div>
+              <label className="block text-xs font-semibold text-gray-700 mb-1">
+                Tên đăng nhập hoặc Email
+              </label>
+              <div className="relative flex items-center">
+                <User className="absolute left-3.5 w-4 h-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="xiangqi_master_123"
+                  {...register('username')}
+                  className="w-full bg-[#f4f2ee] text-gray-800 text-sm rounded-xl pl-10 pr-4 py-3 border border-transparent focus:border-[#361e15] focus:bg-white focus:outline-none transition-all"
+                />
               </div>
+              {errors.username && (
+                <p className="mt-1 text-xs text-red-600">{errors.username.message}</p>
+              )}
+            </div>
 
-              {/* Field 2: Password */}
-              <div>
-                <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">
-                  MẬT KHẨU
-                </label>
-                <div className="relative flex items-center">
-                  <Lock className="absolute left-3.5 w-5 h-5 text-gray-400" />
-                  <input
-                    type="password"
-                    placeholder="••••••••"
-                    {...register('password')}
-                    className="w-full bg-[#f3f4f6] text-gray-800 text-sm rounded-lg pl-11 pr-4 py-3 border border-transparent focus:border-[#b91c1c] focus:bg-white focus:outline-none transition-all"
-                  />
-                </div>
-                {errors.password && (
-                  <p className="mt-1 text-xs text-red-600">{errors.password.message}</p>
-                )}
+            {/* Field 2: Password */}
+            <div>
+              <label className="block text-xs font-semibold text-gray-700 mb-1">
+                Mật khẩu
+              </label>
+              <div className="relative flex items-center">
+                <Lock className="absolute left-3.5 w-4 h-4 text-gray-400" />
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  {...register('password')}
+                  className="w-full bg-[#f4f2ee] text-gray-800 text-sm rounded-xl pl-10 pr-4 py-3 border border-transparent focus:border-[#361e15] focus:bg-white focus:outline-none transition-all"
+                />
               </div>
+              {errors.password && (
+                <p className="mt-1 text-xs text-red-600">{errors.password.message}</p>
+              )}
+            </div>
 
-              {/* Remember me & Forgot Password */}
-              <div className="flex items-center justify-between text-xs pt-1">
-                <label className="flex items-center gap-2 cursor-pointer text-gray-600 hover:text-gray-900 select-none">
-                  <input
-                    type="checkbox"
-                    {...register('rememberMe')}
-                    className="rounded border-gray-300 text-[#b91c1c] focus:ring-[#b91c1c] w-4 h-4"
-                  />
-                  <span>Ghi nhớ</span>
-                </label>
-                <a href="#forgot" className="font-medium text-[#b91c1c] hover:underline">
-                  Quên mật khẩu?
-                </a>
-              </div>
+            {/* Remember me & Forgot Password */}
+            <div className="flex items-center justify-between text-xs pt-1">
+              <label className="flex items-center gap-2 cursor-pointer text-gray-600 hover:text-gray-900 select-none">
+                <input
+                  type="checkbox"
+                  {...register('rememberMe')}
+                  className="rounded border-gray-300 text-[#361e15] focus:ring-[#361e15] w-4 h-4"
+                />
+                <span>Ghi nhớ đăng nhập</span>
+              </label>
+              <a href="#forgot" className="font-medium text-[#361e15] hover:underline">
+                Quên mật khẩu?
+              </a>
+            </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loginMutation.isPending}
-                className="w-full bg-[#b91c1c] hover:bg-[#991b1b] active:bg-[#7f1d1d] text-white font-bold py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer disabled:opacity-70 mt-2"
-              >
-                {loginMutation.isPending ? 'Đang xử lý...' : 'Đăng nhập'}
-              </button>
-            </form>
-          </div>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loginMutation.isPending}
+              className="w-full bg-[#361e15] hover:bg-[#26140e] active:bg-[#1a0c09] text-white font-bold py-3.5 rounded-xl shadow-md transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 text-sm disabled:opacity-70 mt-3"
+            >
+              <span>{loginMutation.isPending ? 'Đang xử lý...' : 'Đăng Nhập Ngay'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </form>
 
           {/* Footer link to Register */}
-          <p className="mt-6 text-xs text-gray-600">
+          <p className="mt-6 text-center text-xs text-gray-600 border-t border-gray-100 pt-4">
             Chưa có tài khoản?{' '}
-            <Link to="/register" className="font-bold text-[#b91c1c] hover:underline">
-              Đăng ký ngay
+            <Link to="/register" className="font-bold text-[#361e15] hover:underline">
+              Đăng ký ngay tại đây
             </Link>
           </p>
         </div>

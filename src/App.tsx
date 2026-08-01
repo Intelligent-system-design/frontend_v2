@@ -6,7 +6,6 @@ import viVN from 'antd/locale/vi_VN';
 import router from '@/routes';
 
 export function App() {
-  // Create TanStack Query client instance once
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -25,8 +24,8 @@ export function App() {
         locale={viVN}
         theme={{
           token: {
-            colorPrimary: '#b91c1c',
-            borderRadius: 8,
+            colorPrimary: '#361e15',
+            borderRadius: 12,
             fontFamily:
               "'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
           },
