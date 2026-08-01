@@ -8,7 +8,12 @@ export const loginApi = async (credentials: LoginCredentials): Promise<AuthRespo
 };
 
 export const registerApi = async (credentials: RegisterCredentials): Promise<AuthResponse> => {
-  const response = await apiClient.post<AuthResponse>('/auth/register', credentials);
+  const payload = {
+    email: credentials.email,
+    username: credentials.username,
+    password: credentials.password,
+  };
+  const response = await apiClient.post<AuthResponse>('/auth/register', payload);
   return response.data;
 };
 
