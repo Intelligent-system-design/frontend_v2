@@ -11,10 +11,21 @@ import { useAuthStore } from '@/store/auth.store';
 // Zod validation schema
 const registerSchema = z
   .object({
-    fullName: z.string().min(2, 'Họ và tên phải có ít nhất 2 ký tự'),
-    email: z.string().min(1, 'Email không được để trống').email('Email không hợp lệ'),
-    password: z.string().min(6, 'Mật khẩu phải có ít nhất 6 ký tự'),
-    confirmPassword: z.string().min(6, 'Vui lòng xác nhận lại mật khẩu'),
+    fullName: z
+      .string()
+      .min(1, 'Họ và tên không được để trống')
+      .min(2, 'Họ và tên phải có ít nhất 2 ký tự'),
+    email: z
+      .string()
+      .min(1, 'Email không được để trống')
+      .email('Email không hợp lệ'),
+    password: z
+      .string()
+      .min(1, 'Mật khẩu không được để trống')
+      .min(6, 'Mật khẩu phải có ít nhất 6 ký tự'),
+    confirmPassword: z
+      .string()
+      .min(1, 'Vui lòng xác nhận lại mật khẩu'),
     agreeTerms: z.boolean().refine((val) => val === true, {
       message: 'Bạn phải đồng ý với điều khoản dịch vụ',
     }),
